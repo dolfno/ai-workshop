@@ -1,5 +1,7 @@
 # Build an AI-Powered Git Diff Summarizer
-This workshop will guide you through hosting an AI model locally and creating a CLI tool that generates pull request descriptions from git diffs.
+This workshop consist of 2 major parts.
+1. **Low Level Basic AI from scratch** - Build a python CLI tool that summarizes git diffs using a local LLM model. *(chapter 1&2)*
+2. **Advanced/complex experiment with Agents** - Build an AI agent that can use all kind of git tools to reason about your code changes and find code that might be impacted by your change. *(chapter 3)*
 
 ## Index
 1. [Hosting AI Model with Ollama](#1-hosting-ai-model-with-ollama)
@@ -21,26 +23,34 @@ https://www.ollama.com/library/llama3.2
 ollama run llama3.2
 ```
 When a model is not downloaded yet, it will fetch it.  
-Also notice the number of params (in our case 7B). 7B should be easy to run locally, but often 14b is possible to.  
+Also notice the number of params (in our case 3B). 3B should be easy to run locally, so does 7B or 14B. However some of the bigger models like DeepSeek-R1 go up to 671B.
+
 Apart from the storage consumption it is also a matter of speed.
 
 You could also use other models like qwen2.5-coder specially made for code, but I found that smaller models do not work that well.
 
 ## 2. Build Python CLI Tool
 ### 2.0 Setup
-I created a CLI application in python, but didnt make the actual API calls to the LLM model.
+I created a CLI application in python that takes the following parameters and makes a summary out of the diff to be used in a PR description.
 
-Install the tool using:
+
+
+Since we try to get this workshop as python painfree as possible we will use poetry to manage deps and virtual environments.
+Just make sure you have python (>3.10) running on your machine.
 ```bash
-pip install -e .
+python -m pip install poetry
+poetry install --without agents # we will use the agents deps later and requires a lot of packages..
 ```
 
-Run the cli tool using: 
+Before you run the diff-summarizer, copy the env.example to .env and fill in the values or remove the <optional> stuff.
+
+Check the interface first with: 
 ```bash
-diff-summarizer --project-folder /path/to/your/project # from installed package
+python summarizer/main.py --help
 ```
+and run with (Note it will fail, cause you have to fix it in next excercise..)
 ```bash
-python summarizer/main.py --project-folder /path/to/your/project # from source code, e.g. during development
+poetry run summarizer
 ```
 
 ### 2.1 Implement `generate_summary` function
@@ -93,7 +103,8 @@ def generate_summary(diff, model="llama3.2"):
     validate_response(response)
 
     # return only the LLM answer
-    return response.json()["completions"][0]["content"]
+    logging.info(f"summary response: {response.json()}")
+    return response.json()["choices"][0]["message"]["content"]
 ```
 
 The main difference you can find in the API response (the ollama api is a wrapper around this raw content).
@@ -140,7 +151,7 @@ This is important, cause it allows the response to be predictible and easy to pa
 **Excercise 3.2 Create a new prompt e.g. to make sure the response is very short, or contains bullets or ...**
 
 ## 3 Agents
-Talk of town today is not a chatbot, chatbots are old and lame by now, everybody can do it :D
+Talk of town today is not about chatbots, chatbots are old, lame and stupid..
 What you need is an agent, or even better a multi-agent reasoning system.
 
 So lets build that!
@@ -155,7 +166,7 @@ Mainly: Dspy and MLFlow, which in turn depend on a lot of other packages like Li
 poetry install --with agents
 ```
 
-* Start MLFlow
+* Start MLFlow (preferably in a new terminal, but make sure you use the same python environment)
 ```bash
 mlflow ui --port 5000
 ```

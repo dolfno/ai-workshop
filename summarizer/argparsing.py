@@ -1,8 +1,11 @@
 import argparse
 import os
 
+from dotenv import load_dotenv
+
 from summarizer.git_cli import check_in_git_dir, get_current_branch
 
+load_dotenv()
 DEFAULT_PROJECT_FOLDER = os.getenv("DEFAULT_PROJECT_FOLDER", "./")
 
 

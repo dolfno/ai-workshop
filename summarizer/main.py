@@ -1,5 +1,6 @@
 import logging
 import os
+from ast import Not
 
 import requests
 from dotenv import load_dotenv
@@ -34,18 +35,18 @@ def generate_summary(diff, model="llama3.2"):
         diff = diff[:4000]
     prompt = CREATE_PR_DESCRIPTION_PROMPT.format(diff=diff)
 
-    messages = [{"role": "user", "content": prompt}]
-    response = requests.post(f"{LLM_HOST}/v1/chat/completions", json={"model": model, "messages": messages})
+    raise NotImplementedError("Fix the next 2 TODOs")
+    response = requests.post()  # TODO FIX THIS, hint use the `prompt` and `model`
     validate_response(response)
 
     # return only the LLM answer
     logging.info(f"summary response: {response.json()}")
-    return response.json()["choices"][0]["message"]["content"]
+    return response.json()  # TODO FIX THIS
 
 
 def main(args_list=None, summarize=True):
     args = parse_args(args_list)
-    logging.basicConfig(level=args.log_level)
+    logging.basicConfig(level="INFO")
     logging.info(f"Using args: {args}")
 
     diff = get_diff(

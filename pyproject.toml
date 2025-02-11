@@ -5,6 +5,9 @@ description = ""
 authors = ["Dolf <dnoordman@schubergphilis.com>"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+summarizer = "summarizer.main:main"
+
 [tool.poetry.dependencies]
 python = "^3.10"
 python-dotenv = "^1.0.1"
