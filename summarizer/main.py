@@ -2,15 +2,15 @@ import logging
 import os
 
 import requests
-from argparsing import parse_args
 from dotenv import load_dotenv
-from prompts import (
+
+from summarizer.argparsing import parse_args
+from summarizer.git_cli import get_diff
+from summarizer.prompts import (
     CREATE_PR_DESCRIPTION_PROMPT,
     CREATE_PR_DESCRIPTION_PROMPT_COPY_PASTE_READY,
     YOUR_PROMPT,
 )
-
-from summarizer.git_cli import get_diff
 
 load_dotenv()
 
@@ -39,7 +39,8 @@ def generate_summary(diff, model="llama3.2"):
     validate_response(response)
 
     # return only the LLM answer
-    return response.json()["completions"][0]["content"]
+    logging.info(f"summary response: {response.json()}")
+    return response.json()["choices"][0]["message"]["content"]
 
 
 def main(args_list=None, summarize=True):

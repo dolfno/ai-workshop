@@ -1,6 +1,5 @@
 import logging
 import os
-from turtle import st
 
 import requests
 from dotenv import load_dotenv

@@ -147,3 +147,29 @@ E.g. Iterm2 which I use can be configured like this:
 Once you've done this, pres `cmd+y` to open the AI assistant and type in your prompt.
 
 ## 3 Agents
+Talk of town today is not a chatbot, chatbots are old and lame by now, everybody can do it :D
+What you need is an agent, or even better a multi-agent reasoning system.
+
+So lets build that!
+Its going to be far from perfect, or maybe wont even work. But it will teach us how these things are constructed, work and fail.
+
+Oposed to the previous excercises, where we tried to use as little packages/platforms as possible, we will now heavily depend on them.
+Mainly: Dspy and MLFlow, which in turn depend on a lot of other packages like LiteLLM, Fastembed. (google them  if you want)
+
+### 3.0 Setup
+* Install deps for this part
+```bash
+poetry install --with agents
+```
+
+* Start MLFlow
+```bash
+mlflow ui --port 5000
+```
+
+* Open agent.ipynb
+
+**Excercise 4.1 Carefully read and run each cell in the notebook**
+**Excercise 4.2 Open MLFlow [127.0.0.1:5000](http://127.0.0.1:5000) and see the results**
+**Excercise 4.3 Write down 3 smart and 3 stupid things the agent did**
+**Excercise 4.4 What would you do to improve the agent?**
