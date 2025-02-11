@@ -9,7 +9,8 @@ This workshop consist of 2 major parts.
    - [Setup](#20-setup)
    - [Implement generate_summary function](#21-implement-generate_summary-function)
    - [Prompt engineering](#22-prompt-engineering)
-3. [Bonus: Enable local ollama model for your terminal](#bonus-enable-local-ollama-model-for-your-terminal)
+3. [Agents](#3-agents)
+4. [Bonus: Enable local ollama model for your terminal](#bonus-enable-local-ollama-model-for-your-terminal)
 
 ## 1. Hosting AI Model with Ollama
 
