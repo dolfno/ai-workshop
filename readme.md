@@ -139,13 +139,6 @@ This is important, cause it allows the response to be predictible and easy to pa
 **Excercise 3.1 Use the other prompts in the summarizer/prompts.py file and evaluate the outcomes**
 **Excercise 3.2 Create a new prompt e.g. to make sure the response is very short, or contains bullets or ...**
 
-## Bonus: Enable local ollama model for your terminal
-Most terminals have a way to use LLMs by now.
-E.g. Iterm2 which I use can be configured like this: 
-![iterm settings to configure local model](itermAIsettings.png)
-
-Once you've done this, pres `cmd+y` to open the AI assistant and type in your prompt.
-
 ## 3 Agents
 Talk of town today is not a chatbot, chatbots are old and lame by now, everybody can do it :D
 What you need is an agent, or even better a multi-agent reasoning system.
@@ -173,3 +166,11 @@ mlflow ui --port 5000
 **Excercise 4.2 Open MLFlow [127.0.0.1:5000](http://127.0.0.1:5000) and see the results**
 **Excercise 4.3 Write down 3 smart and 3 stupid things the agent did**
 **Excercise 4.4 What would you do to improve the agent?**
+
+
+## Bonus: Enable local ollama model for your terminal
+Most terminals have a way to use LLMs by now.
+E.g. Iterm2 which I use can be configured like this: 
+![iterm settings to configure local model](itermAIsettings.png)
+
+Once you've done this, pres `cmd+y` to open the AI assistant and type in your prompt.
