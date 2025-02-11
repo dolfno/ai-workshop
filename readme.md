@@ -111,11 +111,10 @@ def generate_summary(diff, model="llama3.2"):
 The main difference you can find in the API response (the ollama api is a wrapper around this raw content).
 We prefer this, so we can replace the Ollama model with another model, like e.g. the OpenAI or Azure hosted model.
 
-**Excercise 2. See the response below and answer the following questions.
-2.1 Why is choices a list?
-2.2 Is a token the same as 1 word or space separated string?
-2.3 The role here is `assistant`. Find out the other 2 roles and what they are for.**
-
+**Excercise 2. See the response below and answer the following questions.  
+2.1 Why is choices a list?  
+2.2 Is a token the same as 1 word or space separated string?  
+2.3 The role here is `assistant`. Find out the other 2 roles and what they are for.**  
 
 ```json
 [
@@ -147,9 +146,10 @@ We prefer this, so we can replace the Ollama model with another model, like e.g.
 ### 2.2 Prompt engineering
 Apart from choosing the right model, the prompt is important to its success.
 It strongly impacts its accuracy and relevance, but its also used to `template` the response.
-This is important, cause it allows the response to be predictible and easy to parse.
-**Excercise 3.1 Use the other prompts in the summarizer/prompts.py file and evaluate the outcomes**
-**Excercise 3.2 Create a new prompt e.g. to make sure the response is very short, or contains bullets or ...**
+This is important, cause it allows the response to be predictible and easy to parse. 
+
+**Excercise 3.1 Use the other prompts in the summarizer/prompts.py file and evaluate the outcomes**  
+**Excercise 3.2 Create a new prompt e.g. to make sure the response is very short, or contains bullets or ...**  
 
 ## 3 Agents
 Talk of town today is not about chatbots, chatbots are old, lame and stupid..
@@ -174,10 +174,10 @@ mlflow ui --port 5000
 
 * Open agent.ipynb
 
-**Excercise 4.1 Carefully read and run each cell in the notebook**
-**Excercise 4.2 Open MLFlow [127.0.0.1:5000](http://127.0.0.1:5000) and see the results**
-**Excercise 4.3 Write down 3 smart and 3 stupid things the agent did**
-**Excercise 4.4 What would you do to improve the agent?**
+**Excercise 4.1 Carefully read and run each cell in the notebook**  
+**Excercise 4.2 Open MLFlow [127.0.0.1:5000](http://127.0.0.1:5000) and see the results**  
+**Excercise 4.3 Write down 3 smart and 3 stupid things the agent did**  
+**Excercise 4.4 What would you do to improve the agent?**  
 
 
 ## Bonus: Enable local ollama model for your terminal
